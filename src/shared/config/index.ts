@@ -1,0 +1,1 @@
+export { PUBLIC_PAGES } from './ROUTES.config'

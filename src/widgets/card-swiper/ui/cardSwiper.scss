@@ -1,0 +1,25 @@
+.card-swiper-wrapper {
+	height: 100%;
+	display: grid;
+	place-items: center;
+
+	.card-swiper {
+		border-radius: 25px;
+		background: linear-gradient(to right, #cb4eff, #ff4ec1) border-box;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 4px;
+		box-sizing: border-box;
+		max-width: 600px;
+		height: 100%;
+		grid-row: 1;
+		grid-column: 1;
+		transform-origin: bottom;
+
+		&__user {
+			border-radius: 22px;
+		}
+	}
+}

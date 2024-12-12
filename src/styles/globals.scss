@@ -1,0 +1,6 @@
+@import './reset';
+@import './_variables.scss';
+
+.page {
+  padding: var(--page-y-padding) var(--page-x-padding);
+}

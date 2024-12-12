@@ -1,0 +1,4 @@
+.home-page {
+	height: calc(100svh - var(--menu-height) - 2 * var(--page-y-padding));
+	overflow: hidden;
+}

@@ -1,0 +1,11 @@
+.menu-navigation {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--menu-height);
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+  background-color: #fff;
+}

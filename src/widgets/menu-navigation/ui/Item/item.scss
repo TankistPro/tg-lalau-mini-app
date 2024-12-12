@@ -1,0 +1,7 @@
+.menu-item {
+  cursor: pointer;
+
+  &.inactive {
+    filter: grayscale(3);
+  }
+}
