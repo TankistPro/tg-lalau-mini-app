@@ -1,24 +1,27 @@
 import { useMotionValue, useTransform, PanInfo, useMotionValueEvent } from 'framer-motion';
-import { Dispatch, SetStateAction } from 'react';
-import { CardSwipeDirection, IsDragOffBoundary } from '../types/card-swiper.type';
+import { Dispatch, SetStateAction, useCallback, useState } from 'react';
+import { cardDrivenPropsType, CardSwipeDirection, IsDragOffBoundary } from '../types/card-swiper.type';
 
 type Props = {
 	setDirection: Dispatch<SetStateAction<CardSwipeDirection | ''>>;
 	setIsDragging: Dispatch<SetStateAction<boolean>>;
 	setIsDragOffBoundary: Dispatch<SetStateAction<IsDragOffBoundary>>;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	setCardDrivenProps: Dispatch<SetStateAction<any>>;
 };
 
-const offsetBoundary = 150;
+const offsetBoundary = 100;
 
-export const useCardDragHandler = ({
-	setDirection,
-	setIsDragging,
-	setIsDragOffBoundary,
-	setCardDrivenProps
-}: Props) => {
+const initialDrivenProps: cardDrivenPropsType = {
+	cardWrapperX: 0,
+	buttonScaleLike: 1,
+	buttonScaleSkip: 1,
+	hintLikeOpacity: 0,
+	hintSkipOpacity: 0
+};
+
+export const useCardDragHandler = ({ setDirection, setIsDragging, setIsDragOffBoundary }: Props) => {
 	const x = useMotionValue(0);
+
+	const [cardDrivenProps, setCardDrivenProps] = useState<cardDrivenPropsType>(initialDrivenProps);
 
 	const inputX = [offsetBoundary * -1, 0, offsetBoundary];
 	const outputActionScaleSkipAnswer = [1.3, 1, 0.9];
@@ -53,9 +56,9 @@ export const useCardDragHandler = ({
 		}
 	};
 
-	const handlerOnDragStart = () => {
+	const handlerOnDragStart = useCallback(() => {
 		setIsDragging(true);
-	};
+	}, []);
 
 	useMotionValueEvent(x, 'change', latest => {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -74,6 +77,7 @@ export const useCardDragHandler = ({
 		handlerOnDragStart,
 		handlerOnDrag,
 		handlerDragEnd,
+		cardDrivenProps,
 		rotate,
 		x
 	};
