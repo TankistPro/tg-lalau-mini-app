@@ -1,0 +1,34 @@
+.action-hint {
+	width: 94px;
+	height: 94px;
+	border-radius: 50%;
+
+	display: flex;
+	align-items: center;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-60%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	svg {
+		scale: 2.1;
+
+		path {
+			fill: #fff;
+		}
+	}
+
+	&.like {
+		background-color: #1cf8277a;
+		box-shadow: 0 0 15px 2px #1cf8277a;
+		left: 20px;
+	}
+
+	&.skip {
+		background-color: #e42d2d7a;
+		box-shadow: 0 0 15px 2px #e42d2d7a;
+		right: 20px;
+	}
+}

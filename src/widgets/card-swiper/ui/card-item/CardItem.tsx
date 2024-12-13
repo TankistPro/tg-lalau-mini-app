@@ -1,13 +1,13 @@
 import Image from 'next/image';
-import { motion, PanInfo, useMotionValue, useMotionValueEvent, useTransform } from 'framer-motion';
-import { Dispatch, SetStateAction } from 'react';
-import { CardSwipeDirection, IsDragOffBoundary } from '../../lib/types/card-swiper.type';
+import { motion } from 'framer-motion';
+import { Dispatch, SetStateAction, useState } from 'react';
+import { cardDrivenPropsType, CardSwipeDirection, IsDragOffBoundary } from '../../lib/types/card-swiper.type';
 import { ActionButton } from '../action-button/ActionButton';
 
 import SkipSVG from '../../../../../public/img/action-icon/skip.svg';
 import LikeSVG from '../../../../../public/img/action-icon/like.svg';
-
-const offsetBoundary = 150;
+import { useCardDragHandler } from '../../lib/hooks/useCardDragHandler';
+import { ActionHint } from '../action-hint/ActionHint';
 
 type Props = {
 	value: number;
@@ -15,52 +15,24 @@ type Props = {
 	setIsDragging: Dispatch<SetStateAction<boolean>>;
 	setIsDragOffBoundary: Dispatch<SetStateAction<IsDragOffBoundary>>;
 	handleActionBtnOnClick: (btn: CardSwipeDirection) => void;
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	setCardDrivenProps: Dispatch<SetStateAction<any>>;
 };
 
-export function CardItem({
-	value,
-	setDirection,
-	setIsDragging,
-	setIsDragOffBoundary,
-	handleActionBtnOnClick,
-	setCardDrivenProps
-}: Props) {
-	const x = useMotionValue(0);
+const initialDrivenProps: cardDrivenPropsType = {
+	cardWrapperX: 0,
+	buttonScaleLike: 1,
+	buttonScaleSkip: 1,
+	hintLikeOpacity: 0,
+	hintSkipOpacity: 0
+};
 
-	const rotateRaw = useTransform(x, [-150, 150], [-18, 18]);
+export function CardItem({ value, setDirection, setIsDragging, setIsDragOffBoundary, handleActionBtnOnClick }: Props) {
+	const [cardDrivenProps, setCardDrivenProps] = useState<cardDrivenPropsType>(initialDrivenProps);
 
-	const rotate = useTransform(() => {
-		return rotateRaw.get();
-	});
-
-	const inputX = [offsetBoundary * -1, 0, offsetBoundary];
-	const outputActionScaleBadAnswer = [3, 1, 0.3];
-	const outputActionScaleRightAnswer = [0.3, 1, 3];
-	const drivenActionLeftScale = useTransform(x, inputX, outputActionScaleBadAnswer);
-	const drivenActionRightScale = useTransform(x, inputX, outputActionScaleRightAnswer);
-
-	const handlerDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-		setIsDragging(false);
-		setIsDragOffBoundary(null);
-		const isOffBoundary = info.offset.x > offsetBoundary || info.offset.x < -offsetBoundary;
-		const direction = info.offset.x > 0 ? 'right' : 'left';
-
-		if (isOffBoundary) {
-			setDirection(direction);
-		}
-	};
-
-	useMotionValueEvent(x, 'change', latest => {
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		//@ts-expect-error
-		setCardDrivenProps(state => ({
-			...state,
-			cardWrapperX: latest,
-			buttonScaleBadAnswer: drivenActionLeftScale,
-			buttonScaleGoodAnswer: drivenActionRightScale
-		}));
+	const { x, rotate, handlerOnDragStart, handlerOnDrag, handlerDragEnd } = useCardDragHandler({
+		setDirection,
+		setIsDragging,
+		setIsDragOffBoundary,
+		setCardDrivenProps
 	});
 
 	return (
@@ -76,19 +48,10 @@ export function CardItem({
 					x,
 					rotate
 				}}
-				dragTransition={{ bounceStiffness: 1000, bounceDamping: 50 }}
-				onDragStart={() => setIsDragging(true)}
-				onDrag={(_, info) => {
-					const offset = info.offset.x;
-
-					if (offset < 0 && offset < offsetBoundary * -1) {
-						setIsDragOffBoundary('left');
-					} else if (offset > 0 && offset > offsetBoundary) {
-						setIsDragOffBoundary('right');
-					} else {
-						setIsDragOffBoundary(null);
-					}
-				}}
+				dragElastic={0.6}
+				dragTransition={{ bounceStiffness: 1000, bounceDamping: 100 }}
+				onDragStart={handlerOnDragStart}
+				onDrag={handlerOnDrag}
 				onDragEnd={handlerDragEnd}
 			>
 				<Image
@@ -99,11 +62,25 @@ export function CardItem({
 					className='card-swiper__user'
 					alt='user'
 				/>
+				<ActionHint
+					type='like'
+					opacity={cardDrivenProps.hintLikeOpacity}
+				/>
+				<ActionHint
+					type='skip'
+					opacity={cardDrivenProps.hintSkipOpacity}
+				/>
 				<div className='card-swiper__bottom'>
-					<ActionButton onClick={() => handleActionBtnOnClick('left')}>
+					<ActionButton
+						scale={cardDrivenProps.buttonScaleSkip}
+						onClick={() => handleActionBtnOnClick('left')}
+					>
 						<SkipSVG />
 					</ActionButton>
-					<ActionButton onClick={() => handleActionBtnOnClick('right')}>
+					<ActionButton
+						scale={cardDrivenProps.buttonScaleLike}
+						onClick={() => handleActionBtnOnClick('right')}
+					>
 						<LikeSVG />
 					</ActionButton>
 				</div>
