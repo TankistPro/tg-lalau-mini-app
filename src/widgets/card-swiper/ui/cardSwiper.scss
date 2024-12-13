@@ -3,23 +3,35 @@
 	display: grid;
 	place-items: center;
 
-	.card-swiper {
-		border-radius: 25px;
-		background: linear-gradient(to right, #cb4eff, #ff4ec1) border-box;
-		overflow: hidden;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 4px;
-		box-sizing: border-box;
-		max-width: 600px;
-		height: 100%;
+	&__element {
 		grid-row: 1;
 		grid-column: 1;
-		transform-origin: bottom;
+		width: 100%;
+		height: 100%;
 
-		&__user {
-			border-radius: 22px;
+		.card-swiper {
+			border-radius: 25px;
+			background: linear-gradient(to right, #cb4eff, #ff4ec1) border-box;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 4px;
+			box-sizing: border-box;
+			width: 100%;
+			height: 100%;
+			max-width: 600px;
+			position: relative;
+
+			&__user {
+				border-radius: 22px;
+			}
+			&__bottom {
+				position: absolute;
+				bottom: 16px;
+				display: flex;
+				gap: 10px;
+			}
 		}
 	}
 }
