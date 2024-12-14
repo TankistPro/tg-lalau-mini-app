@@ -1,6 +1,10 @@
 @import './reset';
 @import './_variables.scss';
 
+body {
+	background-color: #fff;
+}
+
 .page {
-  padding: var(--page-y-padding) var(--page-x-padding);
+	padding: var(--page-y-padding) var(--page-x-padding);
 }
