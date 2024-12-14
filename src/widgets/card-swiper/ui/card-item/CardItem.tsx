@@ -55,14 +55,17 @@ export function CardItem({ value, data, setData, isLast, isUpcoming }: Props) {
 				onDrag={handlerOnDrag}
 				onDragEnd={handlerDragEnd}
 			>
-				<Image
-					src={`/${value}.png`}
-					width={360}
-					height={600}
-					style={{ height: '100%', width: '100%', objectFit: 'cover' }}
-					className='card-swiper__user'
-					alt='user'
-				/>
+				<div className='card-swiper__user'>
+					<Image
+						src={`/${value}.png`}
+						// width={360}
+						// height={300}
+						fill
+						style={{ height: '100%', width: '100%', objectFit: 'cover' }}
+						alt='user'
+					/>
+				</div>
+
 				<ActionHint
 					type='like'
 					opacity={cardDrivenProps.hintLikeOpacity}
