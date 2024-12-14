@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ActionButton } from '../action-button/ActionButton';
 
@@ -8,6 +7,7 @@ import { ActionHint } from '../action-hint/ActionHint';
 import { Dispatch, SetStateAction } from 'react';
 import { useCardDragHandler } from '../../lib/hooks/useCardDragHandler';
 import { useCardSwiper } from '../../lib/hooks/useCardSwiper';
+import { CardImageSlider } from '@/features/ui';
 
 type Props = {
 	value: number;
@@ -17,7 +17,7 @@ type Props = {
 	isUpcoming: boolean;
 };
 
-export function CardItem({ value, data, setData, isLast, isUpcoming }: Props) {
+export function CardItem({ data, setData, isLast, isUpcoming }: Props) {
 	const { cardVariants, setDirection, setIsDragging, handleActionBtnOnClick, setIsDragOffBoundary } = useCardSwiper({
 		updateDataOnSwipeHandler: setData,
 		data
@@ -55,16 +55,7 @@ export function CardItem({ value, data, setData, isLast, isUpcoming }: Props) {
 				onDrag={handlerOnDrag}
 				onDragEnd={handlerDragEnd}
 			>
-				<div className='card-swiper__user'>
-					<Image
-						src={`/${value}.png`}
-						// width={360}
-						// height={300}
-						fill
-						style={{ height: '100%', width: '100%', objectFit: 'cover' }}
-						alt='user'
-					/>
-				</div>
+				<CardImageSlider />
 
 				<ActionHint
 					type='like'
