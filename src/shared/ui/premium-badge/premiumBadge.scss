@@ -1,0 +1,63 @@
+.premium-badge {
+	display: flex;
+	align-items: center;
+
+	p {
+		color: var(--white-100);
+		font-size: 0.75rem;
+		animation: animate 12s infinite linear;
+		animation-delay: 5s;
+		width: 0%;
+		overflow: hidden;
+	}
+
+	&__ico {
+		height: 24px;
+		animation: rotate 12s infinite linear;
+		animation-delay: 5s;
+	}
+}
+
+@keyframes animate {
+	0% {
+		width: 0%;
+	}
+
+	10% {
+		width: 100%;
+	}
+
+	40% {
+		width: 100%;
+	}
+
+	50% {
+		width: 0%;
+	}
+
+	100% {
+		width: 0%;
+	}
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0);
+	}
+
+	7% {
+		transform: rotate(2turn);
+	}
+
+	43% {
+		transform: rotate(2turn);
+	}
+
+	50% {
+		transform: rotate(0turn);
+	}
+
+	100% {
+		transform: rotate(0turn);
+	}
+}
