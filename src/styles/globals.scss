@@ -1,8 +1,23 @@
 @import './reset';
 @import './_variables.scss';
 
+* {
+	-webkit-tap-highlight-color: transparent;
+
+	-ms-overflow-style: none; /* IE 10+ */
+	scrollbar-width: none;
+	// overscroll-behavior: none;
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none;
+}
+
 body {
 	background-color: #fff;
+	overflow: hidden;
 }
 
 .page {
