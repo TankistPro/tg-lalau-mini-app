@@ -4,5 +4,6 @@
 
 	.card-swiper-wrapper {
 		height: calc(100% - var(--header-height));
+		margin: 0 calc(var(--page-x-padding) * -1);
 	}
 }
