@@ -1,0 +1,12 @@
+.geo-tag {
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+
+	p {
+		font-weight: 600;
+		font-size: 0.75rem;
+		color: var(--white-100);
+	}
+}

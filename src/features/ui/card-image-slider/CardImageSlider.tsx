@@ -2,6 +2,7 @@ import Image from 'next/image';
 import './cardImageSlider.scss';
 import { useMemo, useState } from 'react';
 import clsx from 'clsx';
+import { GeoTag } from '@/shared';
 
 const images = ['/1.png', '/2.png', '/3.png', '/2.png'];
 
@@ -21,12 +22,16 @@ export function CardImageSlider() {
 	return (
 		<div className='card-image-slider'>
 			<div className='card-image-slider__controls'>
-				{images.map((_, index) => (
-					<span
-						className={clsx({ current: index === currentIndex })}
-						key={index}
-					/>
-				))}
+				<div className='control-wrapper'>
+					{images.map((_, index) => (
+						<span
+							className={clsx({ current: index === currentIndex })}
+							key={index}
+						/>
+					))}
+				</div>
+
+				<GeoTag />
 			</div>
 
 			<Image
