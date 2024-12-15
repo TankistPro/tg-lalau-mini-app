@@ -12,8 +12,8 @@ export function HomeHeader() {
 			<Image
 				src={'/img/logo.svg'}
 				quality={100}
-				width={110}
-				height={40}
+				width={100}
+				height={42}
 				priority
 				alt='logo'
 			/>
