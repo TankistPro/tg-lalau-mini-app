@@ -1,0 +1,35 @@
+.card-bottom {
+	position: absolute;
+	bottom: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	z-index: 1;
+	width: 90%;
+
+	&__user {
+		display: flex;
+		flex-direction: column;
+		gap: 7px;
+	}
+
+	&__badges {
+		display: flex;
+		justify-content: stretch;
+		flex-wrap: wrap;
+		gap: 5px;
+	}
+
+	&__buttons {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 30px;
+	}
+
+	&__message {
+		width: 64px;
+		height: 64px;
+		background: linear-gradient(#cb4eff, #ff4ec1);
+	}
+}

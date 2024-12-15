@@ -6,10 +6,10 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children: ReactNode;
 }
 
-export function CircleButton({ children, ...props }: Props) {
+export function CircleButton({ children, className, ...props }: Props) {
 	return (
 		<button
-			className={clsx('circle-button', props.className)}
+			className={clsx('circle-button', className)}
 			{...props}
 		>
 			{children}

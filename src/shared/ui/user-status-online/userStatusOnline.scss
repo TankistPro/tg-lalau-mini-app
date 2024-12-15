@@ -1,0 +1,29 @@
+.user-status-online {
+	background-color: var(--black-32);
+	padding: 6px 8px;
+	border-radius: 16px;
+	gap: 5px;
+	display: flex;
+	align-items: center;
+	width: fit-content;
+
+	p {
+		font-weight: 400;
+		font-size: 0.75rem;
+		color: var(--white-100);
+	}
+
+	span {
+		display: none;
+	}
+
+	&.online {
+		span {
+			width: 6px;
+			height: 6px;
+			background-color: var(--green);
+			border-radius: 50%;
+			display: block;
+		}
+	}
+}

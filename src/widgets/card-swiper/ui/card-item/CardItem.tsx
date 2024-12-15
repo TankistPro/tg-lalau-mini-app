@@ -1,13 +1,11 @@
 import { motion } from 'framer-motion';
-import { ActionButton } from '../action-button/ActionButton';
 
-import SkipSVG from '../../../../../public/img/action-icon/skip.svg';
-import LikeSVG from '../../../../../public/img/action-icon/like.svg';
 import { ActionHint } from '../action-hint/ActionHint';
 import { Dispatch, SetStateAction } from 'react';
 import { useCardDragHandler } from '../../lib/hooks/useCardDragHandler';
 import { useCardSwiper } from '../../lib/hooks/useCardSwiper';
 import { CardImageSlider } from '@/features/ui';
+import { CardBottom } from '../card-bottom/CardBottom';
 
 type Props = {
 	value: number;
@@ -65,20 +63,10 @@ export function CardItem({ data, setData, isLast, isUpcoming }: Props) {
 					type='skip'
 					opacity={cardDrivenProps.hintSkipOpacity}
 				/>
-				<div className='card-swiper__bottom'>
-					<ActionButton
-						scale={cardDrivenProps.buttonScaleSkip}
-						onClick={() => handleActionBtnOnClick('left')}
-					>
-						<SkipSVG />
-					</ActionButton>
-					<ActionButton
-						scale={cardDrivenProps.buttonScaleLike}
-						onClick={() => handleActionBtnOnClick('right')}
-					>
-						<LikeSVG />
-					</ActionButton>
-				</div>
+				<CardBottom
+					handleActionBtnOnClick={handleActionBtnOnClick}
+					cardDrivenProps={cardDrivenProps}
+				/>
 			</motion.div>
 		</motion.div>
 	);

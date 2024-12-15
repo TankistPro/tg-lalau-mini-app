@@ -1,0 +1,14 @@
+.user-tag {
+	background-color: var(--black-32);
+	padding: 6px 8px;
+	border-radius: 16px;
+	display: flex;
+	gap: 4px;
+	align-items: center;
+
+	p {
+		font-weight: 400;
+		font-size: 0.75rem;
+		color: var(--white-100);
+	}
+}
