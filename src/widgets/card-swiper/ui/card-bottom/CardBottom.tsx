@@ -8,7 +8,7 @@ import LikeSVG from '../../../../../public/img/action-icon/like.svg';
 import MessageSVG from '../../../../../public/img/message.svg';
 
 import './cardBottom.scss';
-import { CircleButton, PUBLIC_PAGES } from '@/shared';
+import { CircleButton, GeoTag, PUBLIC_PAGES } from '@/shared';
 import { useRouter } from 'next/navigation';
 import { UserTag } from '@/shared/ui/user-tag/UserTag';
 import { USER_TAGS } from '@/shared/config/user-tags.config';
@@ -27,6 +27,7 @@ export function CardBottom({ handleActionBtnOnClick, cardDrivenProps }: Props) {
 		<div className='card-bottom'>
 			<div className='card-bottom__user'>
 				<UserStatusOnline status='online' />
+				<GeoTag />
 				<UserNameInfo />
 			</div>
 			<div className='card-bottom__badges'>

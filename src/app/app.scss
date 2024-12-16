@@ -1,9 +1,10 @@
 .home-page {
-	height: calc(100svh - var(--menu-height) - 2 * var(--page-y-padding));
+	height: calc(100svh - var(--menu-height) - 5px);
 	overflow: hidden;
+	padding: 0 var(--page-x-padding) 0 var(--page-x-padding);
 
 	.card-swiper-wrapper {
-		height: calc(100% - var(--header-height));
+		height: calc(100%);
 		margin: 0 calc(var(--page-x-padding) * -1);
 	}
 }
