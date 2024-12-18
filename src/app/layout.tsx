@@ -3,6 +3,8 @@ import '@/styles/globals.scss';
 import { Navigation } from '@/widgets/menu-navigation';
 
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
+import { Provider } from './Provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,10 +26,21 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang='ru'>
+		<html
+			lang='ru'
+			suppressHydrationWarning
+		>
 			<body className={inter.className}>
-				{children}
-				<Navigation />
+				<Script
+					src='https://telegram.org/js/telegram-web-app.js'
+					strategy='beforeInteractive'
+				/>
+				<Provider>
+					<>
+						{children}
+						<Navigation />
+					</>
+				</Provider>
 			</body>
 		</html>
 	);
