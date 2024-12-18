@@ -25,18 +25,19 @@ export function init(): void {
 	miniApp.mount();
 	themeParams.mount();
 	initData.restore();
-	if (viewport.requestFullscreen.isAvailable()) {
-		viewport.requestFullscreen();
-		console.log(viewport.isFullscreen()); // true
-	}
 	void viewport.mount().catch(e => {
 		console.error('Something went wrong mounting the viewport', e);
-	});
 
-	// Define components-related CSS variables.
-	viewport.bindCssVars();
-	miniApp.bindCssVars();
-	themeParams.bindCssVars();
+		if (viewport.requestFullscreen.isAvailable()) {
+			viewport.requestFullscreen();
+			console.log(viewport.isFullscreen()); // true
+		}
+
+		// Define components-related CSS variables.
+		viewport.bindCssVars();
+		miniApp.bindCssVars();
+		themeParams.bindCssVars();
+	});
 
 	// Add Eruda if needed.
 	// debug && import('eruda').then(lib => lib.default.init()).catch(console.error);
