@@ -28,7 +28,8 @@ export function init(): void {
 		miniApp.isMounted(); // true
 		miniApp.bindCssVars();
 		console.log(miniApp.isDark);
-		miniApp.setHeaderColor('#ffffff');
+		const header_color = miniApp.isDark() ? 'secondary_bg_color' : '#ffffff';
+		miniApp.setHeaderColor(header_color);
 	}
 
 	if (themeParams.mount.isAvailable()) {
