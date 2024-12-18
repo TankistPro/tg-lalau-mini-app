@@ -8,9 +8,10 @@ import { HomeHeader } from '@/widgets/home-header';
 import { useEffect } from 'react';
 
 export default function Home() {
-	const { initDataUnsafe } = useTelegram();
+	const webApp = useTelegram();
 	useEffect(() => {
-		console.log(initDataUnsafe);
+		console.log(webApp.initDataUnsafe);
+		console.log(webApp);
 	}, []);
 
 	return (
