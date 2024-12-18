@@ -5,7 +5,8 @@ import {
 	miniApp,
 	initData,
 	// $debug,
-	init as initSDK
+	init as initSDK,
+	swipeBehavior
 } from '@telegram-apps/sdk-react';
 
 /**
@@ -22,9 +23,25 @@ export function init(): void {
 	// Mount all components used in the project.
 	// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 	backButton.isSupported() && backButton.mount();
-	miniApp.mount();
-	themeParams.mount();
+	if (miniApp.mount.isAvailable()) {
+		miniApp.mount();
+		miniApp.isMounted(); // true
+		miniApp.bindCssVars();
+	}
+
+	if (themeParams.mount.isAvailable()) {
+		themeParams.mount();
+		themeParams.isMounted(); // true
+		themeParams.bindCssVars();
+	}
+
+	if (swipeBehavior.disableVertical.isAvailable()) {
+		swipeBehavior.disableVertical();
+		swipeBehavior.isVerticalEnabled(); // false
+	}
+
 	initData.restore();
+
 	void viewport
 		.mount()
 		.then(() => {
@@ -32,10 +49,7 @@ export function init(): void {
 				viewport.requestFullscreen();
 				console.log(viewport.isFullscreen()); // true
 			}
-
 			viewport.bindCssVars();
-			miniApp.bindCssVars();
-			themeParams.bindCssVars();
 		})
 		.catch(e => {
 			console.error('Something went wrong mounting the viewport', e);
