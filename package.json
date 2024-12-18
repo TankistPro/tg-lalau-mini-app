@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@svgr/webpack": "^8.1.0",
-    "@telegram-apps/sdk-react": "^2.0.21",
     "clsx": "^2.1.1",
     "framer-motion": "^11.14.1",
     "next": "15.0.4",

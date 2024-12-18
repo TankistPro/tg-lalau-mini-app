@@ -18,6 +18,11 @@
 			display: flex;
 			justify-content: space-between;
 
+			span {
+				display: flex;
+				gap: 10px;
+			}
+
 			.circle-button {
 				background-color: var(--black-64);
 

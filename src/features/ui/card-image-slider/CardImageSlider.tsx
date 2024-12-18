@@ -2,7 +2,7 @@ import Image from 'next/image';
 import './cardImageSlider.scss';
 import { useMemo, useState } from 'react';
 import clsx from 'clsx';
-import { CircleButton } from '@/shared';
+import { CircleButton, GeoTag } from '@/shared';
 
 import BackSVG from '../../../../public/img/back-arrow.svg';
 import FilterSVG from '../../../../public/img/filter.svg';
@@ -34,15 +34,16 @@ export function CardImageSlider() {
 					))}
 				</div>
 
-				{/* <GeoTag /> */}
-
 				<div className='control__header'>
-					<CircleButton>
-						<BackSVG />
-					</CircleButton>
-					<CircleButton>
-						<FilterSVG />
-					</CircleButton>
+					<GeoTag />
+					<span>
+						<CircleButton>
+							<BackSVG />
+						</CircleButton>
+						<CircleButton>
+							<FilterSVG />
+						</CircleButton>
+					</span>
 				</div>
 			</div>
 
