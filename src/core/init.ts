@@ -27,7 +27,8 @@ export function init(): void {
 		miniApp.mount();
 		miniApp.isMounted(); // true
 		miniApp.bindCssVars();
-		miniApp.setHeaderColor('secondary_bg_color');
+		console.log(miniApp.isDark);
+		miniApp.setHeaderColor('#ffffff');
 	}
 
 	if (themeParams.mount.isAvailable()) {
