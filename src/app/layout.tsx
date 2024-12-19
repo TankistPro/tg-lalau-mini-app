@@ -4,6 +4,7 @@ import { Navigation } from '@/widgets/menu-navigation';
 
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
+import { Providers } from './Providers';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,14 +26,19 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang='ru'>
+		<html
+			lang='ru'
+			suppressHydrationWarning
+		>
 			<body className={inter.className}>
-				<Script
-					src='https://telegram.org/js/telegram-web-app.js'
-					strategy='beforeInteractive'
-				/>
-				{children}
-				<Navigation />
+				<Providers>
+					<Script
+						src='https://telegram.org/js/telegram-web-app.js'
+						strategy='beforeInteractive'
+					/>
+					{children}
+					<Navigation />
+				</Providers>
 			</body>
 		</html>
 	);
