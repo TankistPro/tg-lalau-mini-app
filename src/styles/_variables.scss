@@ -1,6 +1,6 @@
 :root {
 	--menu-height: 55px;
-	--header-height: 35px;
+	--header-height: var(--tg-content-safe-area-inset-top);
 
 	--page-x-padding: 8px;
 	--page-y-padding: 8px;
