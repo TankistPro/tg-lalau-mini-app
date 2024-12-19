@@ -8,7 +8,12 @@ type Props = PropsWithChildren;
 export function Header({ children }: Props) {
 	const { safeAreaInsetTop } = viewport;
 	useEffect(() => {
-		console.log(viewport.safeAreaInsetTop);
+		console.log(viewport.safeAreaInsetTop());
 	}, []);
-	return <header style={{ paddingTop: `${safeAreaInsetTop()}px` }}>{children}</header>;
+	return (
+		<header style={{ paddingTop: `${safeAreaInsetTop()}px` }}>
+			{children}
+			{viewport.safeAreaInsetTop()}
+		</header>
+	);
 }
