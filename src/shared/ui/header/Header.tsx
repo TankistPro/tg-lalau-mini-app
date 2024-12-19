@@ -1,8 +1,14 @@
+'use client';
+import { viewport } from '@telegram-apps/sdk-react';
 import './header.scss';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useEffect } from 'react';
 
 type Props = PropsWithChildren;
 
 export function Header({ children }: Props) {
-	return <header>{children}</header>;
+	const { safeAreaInsetTop } = viewport;
+	useEffect(() => {
+		console.log(viewport.safeAreaInsetTop);
+	}, []);
+	return <header style={{ paddingTop: `${safeAreaInsetTop()}px` }}>{children}</header>;
 }
