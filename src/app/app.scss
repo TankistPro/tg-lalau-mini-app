@@ -1,5 +1,5 @@
 .home-page {
-	height: calc(100svh - var(--menu-height) - 5px - var(--tg-viewport-content-safe-area-inset-top));
+	height: calc(100svh - var(--menu-height) - 5px - var(--tg-viewport-content-safe-area-inset-top) - 12.5px;
 	overflow: hidden;
 	padding: 0 var(--page-x-padding) 0 var(--page-x-padding);
 
