@@ -27,7 +27,6 @@ export function init(): void {
 		miniApp.mount();
 		miniApp.isMounted(); // true
 		miniApp.bindCssVars();
-		console.log(miniApp.isDark);
 		const header_color = miniApp.isDark() ? 'secondary_bg_color' : '#ffffff';
 		miniApp.setHeaderColor(header_color);
 	}
@@ -50,7 +49,6 @@ export function init(): void {
 		.then(() => {
 			if (viewport.requestFullscreen.isAvailable()) {
 				viewport.requestFullscreen();
-				console.log(viewport.isFullscreen()); // true
 			}
 			viewport.bindCssVars();
 		})

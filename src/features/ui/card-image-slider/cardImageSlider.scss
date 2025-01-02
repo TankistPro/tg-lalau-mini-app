@@ -2,6 +2,7 @@
 	position: relative;
 	width: 100%;
 	height: 100%;
+	max-width: 600px;
 
 	&__controls {
 		position: absolute;
@@ -54,7 +55,7 @@
 	}
 
 	img {
-		border-radius: 22px;
+		border-radius: 25px;
 	}
 
 	.click-area {

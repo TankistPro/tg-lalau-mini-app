@@ -1,1 +1,1 @@
-export * from './ui/HomeHeader'
+export * from './ui/LogoHeader';

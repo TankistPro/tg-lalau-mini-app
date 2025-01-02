@@ -1,0 +1,19 @@
+.user-profile-modal {
+	position: fixed;
+	top: calc(var(--tg-safe-area-inset-top) + var(--header-height));
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: var(--white-100);
+	z-index: 1000;
+	border-radius: 25px 25px 0 0;
+
+	&__gallery {
+		display: flex;
+		justify-content: center;
+		height: 100%;
+
+		margin: 0 calc(var(--page-x-padding) * -1);
+		// height: calc(100% - var(--header-height));
+	}
+}

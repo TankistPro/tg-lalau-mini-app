@@ -6,10 +6,12 @@ import { CircleButton, GeoTag } from '@/shared';
 
 import BackSVG from '../../../../public/img/back-arrow.svg';
 import FilterSVG from '../../../../public/img/filter.svg';
+import { useProfileStore } from '@/store/useProfileUser.store';
 
 const images = ['/1.png', '/2.png', '/3.png', '/2.png'];
 
 export function CardImageSlider() {
+	const openUserProfile = useProfileStore(store => store.openUserProfile);
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	const currentImage = useMemo(() => {
@@ -52,6 +54,7 @@ export function CardImageSlider() {
 				fill
 				style={{ height: '100%', width: '100%', objectFit: 'cover' }}
 				alt='user'
+				onClick={() => openUserProfile()}
 			/>
 			<span
 				className='click-area'

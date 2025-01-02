@@ -1,11 +1,11 @@
 'use client';
-import './homeHeader.scss';
+import './logoHeader.scss';
 
 import Image from 'next/image';
 
-export function HomeHeader() {
+export function LogoHeader() {
 	return (
-		<div className='home-header'>
+		<div className='logo-header'>
 			<Image
 				src={'/img/logo.svg'}
 				quality={100}

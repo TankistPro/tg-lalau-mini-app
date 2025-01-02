@@ -1,6 +1,7 @@
 'use client';
 
 import { init } from '@/core/init';
+import { domAnimation, LazyMotion } from 'framer-motion';
 import { useEffect } from 'react';
 
 export function Providers({
@@ -11,5 +12,5 @@ export function Providers({
 	useEffect(() => {
 		init();
 	}, []);
-	return <>{children}</>;
+	return <LazyMotion features={domAnimation}>{children}</LazyMotion>;
 }

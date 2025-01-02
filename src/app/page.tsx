@@ -1,17 +1,18 @@
 'use client';
+import { UserProfile } from '@/widgets/user-profile/UserProfile';
 import './app.scss';
 
-import { Header } from '@/shared/ui';
 import { CardSwiper } from '@/widgets/card-swiper';
-import { HomeHeader } from '@/widgets/home-header';
+import { useProfileStore } from '@/store/useProfileUser.store';
 
 export default function Home() {
+	const isOpenUserProfile = useProfileStore(store => store.isOpenUserProfile);
+
 	return (
 		<div className='page home-page'>
-			<Header>
-				<HomeHeader />
-			</Header>
 			<CardSwiper />
+
+			{isOpenUserProfile && <UserProfile />}
 		</div>
 	);
 }

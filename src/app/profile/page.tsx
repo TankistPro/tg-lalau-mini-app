@@ -1,10 +1,11 @@
-import type { Metadata } from 'next'
+import type { Metadata } from 'next';
+import { Profile } from './Profile';
 
 export const metadata: Metadata = {
-  title: 'Профиль',
-  description: ''
-}
+	title: 'Профиль',
+	description: ''
+};
 
 export default function Page() {
-  return <div></div>
+	return <Profile />;
 }

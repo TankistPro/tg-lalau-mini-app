@@ -24,4 +24,5 @@ body {
 
 .page {
 	padding: var(--page-y-padding) var(--page-x-padding);
+	height: calc(100svh - var(--menu-height) - 5px - var(--tg-safe-area-inset-top));
 }
