@@ -1,19 +1,41 @@
 .user-profile-modal {
-	position: fixed;
-	top: calc(var(--tg-safe-area-inset-top) + var(--header-height));
-	left: 0;
-	right: 0;
-	bottom: 0;
 	background: var(--white-100);
-	z-index: 1000;
 	border-radius: 25px 25px 0 0;
+	width: 100%;
+	padding-bottom: 20px;
 
 	&__gallery {
 		display: flex;
 		justify-content: center;
-		height: 100%;
-
+		height: calc(100svh - var(--menu-height) - 5px - var(--tg-safe-area-inset-top));
 		margin: 0 calc(var(--page-x-padding) * -1);
-		// height: calc(100% - var(--header-height));
+	}
+
+	&__tags {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 10px;
+		margin: 20px 0;
+
+		.user-tag {
+			svg path {
+				fill: var(--black-100);
+			}
+			p {
+				color: var(--black-100);
+			}
+		}
+	}
+
+	&__buttons {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 30px;
+
+		.action-button {
+			background-color: #1212120f;
+		}
 	}
 }
