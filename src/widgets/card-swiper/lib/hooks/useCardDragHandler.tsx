@@ -44,7 +44,7 @@ export const useCardDragHandler = ({ setDirection, setIsDragging, setIsDragOffBo
 				setDirection(direction);
 			}
 		},
-		[offsetBoundary]
+		[setIsDragging, setIsDragOffBoundary, setDirection]
 	);
 
 	const handlerOnDrag = useCallback(
@@ -59,12 +59,12 @@ export const useCardDragHandler = ({ setDirection, setIsDragging, setIsDragOffBo
 				setIsDragOffBoundary(null);
 			}
 		},
-		[offsetBoundary]
+		[setIsDragOffBoundary]
 	);
 
 	const handlerOnDragStart = useCallback(() => {
 		setIsDragging(true);
-	}, []);
+	}, [setIsDragging]);
 
 	useMotionValueEvent(x, 'change', latest => {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
