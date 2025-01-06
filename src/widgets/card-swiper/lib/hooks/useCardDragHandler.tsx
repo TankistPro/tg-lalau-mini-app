@@ -33,28 +33,34 @@ export const useCardDragHandler = ({ setDirection, setIsDragging, setIsDragOffBo
 	const drivenHintLikeOpacity = useTransform(x, [0, offsetBoundary], [0, 1]);
 	const drivenHintSkipOpacity = useTransform(x, [0, offsetBoundary * -1], [0, 1]);
 
-	const handlerDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-		setIsDragging(false);
-		setIsDragOffBoundary(null);
-		const isOffBoundary = info.offset.x > offsetBoundary || info.offset.x < -offsetBoundary;
-		const direction = info.offset.x > 0 ? 'right' : 'left';
-
-		if (isOffBoundary) {
-			setDirection(direction);
-		}
-	};
-
-	const handlerOnDrag = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-		const offset = info.offset.x;
-
-		if (offset < 0 && offset < offsetBoundary * -1) {
-			setIsDragOffBoundary('left');
-		} else if (offset > 0 && offset > offsetBoundary) {
-			setIsDragOffBoundary('right');
-		} else {
+	const handlerDragEnd = useCallback(
+		(_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+			setIsDragging(false);
 			setIsDragOffBoundary(null);
-		}
-	};
+			const isOffBoundary = info.offset.x > offsetBoundary || info.offset.x < -offsetBoundary;
+			const direction = info.offset.x > 0 ? 'right' : 'left';
+
+			if (isOffBoundary) {
+				setDirection(direction);
+			}
+		},
+		[offsetBoundary]
+	);
+
+	const handlerOnDrag = useCallback(
+		(_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+			const offset = info.offset.x;
+
+			if (offset < 0 && offset < offsetBoundary * -1) {
+				setIsDragOffBoundary('left');
+			} else if (offset > 0 && offset > offsetBoundary) {
+				setIsDragOffBoundary('right');
+			} else {
+				setIsDragOffBoundary(null);
+			}
+		},
+		[offsetBoundary]
+	);
 
 	const handlerOnDragStart = useCallback(() => {
 		setIsDragging(true);

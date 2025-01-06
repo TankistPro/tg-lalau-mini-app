@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 import { ActionHint } from '../action-hint/ActionHint';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useMemo } from 'react';
 import { useCardDragHandler } from '../../lib/hooks/useCardDragHandler';
 import { useCardSwiper } from '../../lib/hooks/useCardSwiper';
 import { CardImageSlider } from '@/features/ui';
@@ -27,11 +27,15 @@ export function CardItem({ data, setData, isLast, isUpcoming }: Props) {
 		setIsDragOffBoundary
 	});
 
+	const animation = useMemo(() => {
+		return isLast ? 'current' : isUpcoming ? 'upcoming' : 'remainings';
+	}, [isLast, isUpcoming]);
+
 	return (
 		<motion.div
 			variants={cardVariants}
 			initial='remainings'
-			animate={isLast ? 'current' : isUpcoming ? 'upcoming' : 'remainings'}
+			animate={animation}
 			exit='exit'
 			style={{ x }}
 			className='card-swiper-wrapper__element'

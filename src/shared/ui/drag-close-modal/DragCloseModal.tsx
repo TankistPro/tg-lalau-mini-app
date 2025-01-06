@@ -47,7 +47,7 @@ export function DragCloseModal({ closeHandler, children }: Props) {
 				}}
 				drag='y'
 				onDragEnd={() => {
-					if (y.get() >= 150) handlerClose();
+					if (y.get() >= 100) handlerClose();
 				}}
 				dragControls={controls}
 				dragListener={false}

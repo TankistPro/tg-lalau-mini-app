@@ -20,7 +20,6 @@ export function init(): void {
 	// Also, configure the package.
 	initSDK();
 
-	// Mount all components used in the project.
 	// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 	backButton.isSupported() && backButton.mount();
 	if (miniApp.mount.isAvailable()) {
@@ -39,7 +38,6 @@ export function init(): void {
 
 	if (swipeBehavior.disableVertical.isAvailable()) {
 		swipeBehavior.disableVertical();
-		swipeBehavior.isVerticalEnabled(); // false
 	}
 
 	initData.restore();

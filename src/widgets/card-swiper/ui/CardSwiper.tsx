@@ -6,7 +6,7 @@ import './cardSwiper.scss';
 import { AnimatePresence } from 'framer-motion';
 
 export function CardSwiper() {
-	const [data, setData] = useState([1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]);
+	const [data, setData] = useState([1, 2, 3, 4, 5]); // , 1, 2, 3, 1, 2, 3, 1, 2, 3
 
 	return (
 		<div className='card-swiper-wrapper'>

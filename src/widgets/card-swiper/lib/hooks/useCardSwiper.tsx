@@ -24,7 +24,7 @@ export const useCardSwiper = ({
 		if (['left', 'right'].includes(direction)) {
 			updateDataOnSwipeHandler(data.slice(0, -1));
 		}
-	}, [direction]);
+	}, [data, direction, updateDataOnSwipeHandler]);
 
 	const cardVariants = useMemo(() => {
 		return {

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import './cardImageSlider.scss';
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import clsx from 'clsx';
 import { CircleButton, GeoTag } from '@/shared';
 
@@ -18,11 +18,14 @@ export function CardImageSlider() {
 		return images[currentIndex];
 	}, [currentIndex]);
 
-	const toggleImage = (direction: number) => {
-		if (currentIndex === images.length - 1 && direction === 1) setCurrentIndex(0);
-		else if (currentIndex === 0 && direction === -1) setCurrentIndex(images.length - 1);
-		else setCurrentIndex(currentIndex + direction);
-	};
+	const toggleImage = useCallback(
+		(direction: number) => {
+			if (currentIndex === images.length - 1 && direction === 1) setCurrentIndex(0);
+			else if (currentIndex === 0 && direction === -1) setCurrentIndex(images.length - 1);
+			else setCurrentIndex(currentIndex + direction);
+		},
+		[currentIndex]
+	);
 
 	return (
 		<div className='card-image-slider'>
@@ -54,8 +57,9 @@ export function CardImageSlider() {
 				fill
 				style={{ height: '100%', width: '100%', objectFit: 'cover' }}
 				alt='user'
-				onClick={() => openUserProfile()}
+				onClick={openUserProfile}
 			/>
+
 			<span
 				className='click-area'
 				onClick={() => toggleImage(-1)}
