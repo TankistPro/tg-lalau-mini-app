@@ -4,7 +4,7 @@ import LikeSVG from '../../../../../public/img/action-icon/like.svg';
 import SkipSVG from '../../../../../public/img/action-icon/skip.svg';
 
 import clsx from 'clsx';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 interface Props {
 	type: 'like' | 'skip';
@@ -13,11 +13,11 @@ interface Props {
 
 export function ActionHint({ type, opacity }: Props) {
 	return (
-		<motion.div
+		<m.div
 			className={clsx('action-hint', type)}
 			style={{ opacity }}
 		>
 			{type === 'like' ? <LikeSVG /> : <SkipSVG />}
-		</motion.div>
+		</m.div>
 	);
 }

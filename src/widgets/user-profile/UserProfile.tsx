@@ -1,7 +1,5 @@
-// import { m } from 'framer-motion';
 import { UserTag } from '@/shared/ui/user-tag/UserTag';
 import './userProfile.scss';
-// import { useProfileStore } from '@/store/useProfileUser.store';
 import { CardImageSlider } from '@/features/ui';
 import { USER_TAGS } from '@/shared/config/user-tags.config';
 

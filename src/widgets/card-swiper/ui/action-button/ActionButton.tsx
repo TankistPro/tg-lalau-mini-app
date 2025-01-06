@@ -1,6 +1,6 @@
 import { memo, PropsWithChildren } from 'react';
 import './actionButton.scss';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 interface Props extends PropsWithChildren {
 	onClick: () => void;
@@ -9,7 +9,7 @@ interface Props extends PropsWithChildren {
 
 export const ActionButton = memo(function ActionButton({ children, onClick, scale }: Props) {
 	return (
-		<motion.button
+		<m.button
 			className='action-button'
 			onClick={onClick}
 			style={{
@@ -17,6 +17,6 @@ export const ActionButton = memo(function ActionButton({ children, onClick, scal
 			}}
 		>
 			{children}
-		</motion.button>
+		</m.button>
 	);
 });
