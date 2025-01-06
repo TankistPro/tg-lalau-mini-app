@@ -1,4 +1,4 @@
-import { m } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 import { ActionHint } from '../action-hint/ActionHint';
 import { Dispatch, SetStateAction, useMemo } from 'react';
@@ -32,7 +32,7 @@ export function CardItem({ data, setData, isLast, isUpcoming }: Props) {
 	}, [isLast, isUpcoming]);
 
 	return (
-		<m.div
+		<motion.div
 			variants={cardVariants}
 			initial='remainings'
 			animate={animation}
@@ -40,7 +40,7 @@ export function CardItem({ data, setData, isLast, isUpcoming }: Props) {
 			style={{ x }}
 			className='card-swiper-wrapper__element'
 		>
-			<m.div
+			<motion.div
 				className='card-swiper'
 				drag='x'
 				dragConstraints={{
@@ -71,7 +71,7 @@ export function CardItem({ data, setData, isLast, isUpcoming }: Props) {
 					handleActionBtnOnClick={handleActionBtnOnClick}
 					cardDrivenProps={cardDrivenProps}
 				/>
-			</m.div>
-		</m.div>
+			</motion.div>
+		</motion.div>
 	);
 }
