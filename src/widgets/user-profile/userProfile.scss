@@ -1,6 +1,5 @@
 .user-profile-modal {
 	background: var(--white-100);
-	border-radius: 25px 25px 0 0;
 	width: 100%;
 	padding-bottom: 20px;
 
@@ -8,7 +7,6 @@
 		display: flex;
 		justify-content: center;
 		height: calc(100svh - var(--menu-height) - 5px - var(--tg-safe-area-inset-top));
-		margin: 0 calc(var(--page-x-padding) * -1);
 	}
 
 	&__tags {
@@ -19,6 +17,8 @@
 		margin: 20px 0;
 
 		.user-tag {
+			background-color: #1212120f;
+
 			svg path {
 				fill: var(--black-100);
 			}

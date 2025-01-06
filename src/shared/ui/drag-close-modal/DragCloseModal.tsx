@@ -47,9 +47,10 @@ export function DragCloseModal({ closeHandler, children }: Props) {
 				}}
 				drag='y'
 				onDragEnd={() => {
-					if (y.get() >= 100) handlerClose();
+					if (y.get() >= 150) handlerClose();
 				}}
 				dragControls={controls}
+				dragListener={false}
 				dragConstraints={{
 					top: 0,
 					bottom: 0
@@ -59,7 +60,12 @@ export function DragCloseModal({ closeHandler, children }: Props) {
 					bottom: 0.5
 				}}
 			>
-				<div className='drag-close-modal__dragger'></div>
+				<div
+					className='drag-close-modal__dragger'
+					onPointerDown={e => controls.start(e)}
+				>
+					<span />
+				</div>
 				<div className='drag-close-modal__content'>{children}</div>
 			</m.div>
 		</m.div>

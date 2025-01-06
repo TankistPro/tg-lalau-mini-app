@@ -3,7 +3,7 @@
 	inset: 0;
 	z-index: 1000;
 	background-color: rgba(0, 0, 0, 0.5);
-	overflow: scroll;
+	overflow-y: scroll;
 
 	&__wrapper {
 		position: absolute;
@@ -13,7 +13,10 @@
 		height: max-content;
 		top: calc(var(--tg-safe-area-inset-top) + var(--header-height));
 		overflow-y: scroll;
-		border-radius: 25px 25px 0 0;
+		border-radius: 10px 10px 0 0;
+		display: flex;
+		flex-direction: column;
+		background-color: white;
 	}
 
 	&__content {
@@ -25,12 +28,21 @@
 	}
 
 	&__dragger {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 60%;
+		height: 15px;
+		width: 100%;
 		touch-action: none;
-		z-index: 2000;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: grab;
+
+		span {
+			background-color: black;
+			width: 50%;
+			height: 4px;
+			display: flex;
+			max-width: 400px;
+			border-radius: 50px;
+		}
 	}
 }
